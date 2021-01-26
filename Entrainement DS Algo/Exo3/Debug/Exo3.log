@@ -1,0 +1,5 @@
+﻿  main.c
+C:\Users\Administrateur\source\repos\Entrainement DS Algo\Exo3\main.c(29,18): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
+C:\Users\Administrateur\source\repos\Entrainement DS Algo\Exo3\main.c(40,33): warning C4047: 'fonction' : les niveaux d'indirection de 'int (*)[50]' et de 'int' sont différents
+C:\Users\Administrateur\source\repos\Entrainement DS Algo\Exo3\main.c(40,29): warning C4024: 'rotationDroiteTab' : types différents pour le paramètre formel et réel 1
+  Exo3.vcxproj -> C:\Users\Administrateur\source\repos\Entrainement DS Algo\Debug\Exo3.exe

@@ -1,0 +1,3 @@
+﻿  Exo1.c
+C:\Users\Administrateur\source\repos\Entrainement DS Algo\Entrainement DS Algo\Exo1.c(17,22): warning C4098: 'displayHHMMSS' : fonction 'void' retournant une valeur
+  Entrainement DS Algo.vcxproj -> C:\Users\Administrateur\source\repos\Entrainement DS Algo\Debug\Entrainement DS Algo.exe

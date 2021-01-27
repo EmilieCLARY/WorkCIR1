@@ -1,7 +1,7 @@
 ﻿  GameOfLife.c
-C:\Users\Administrateur\source\repos\GameOfLife\GameOfLife\GameOfLife.c(3,52): warning C4133: '=' : types incompatibles - de 'int *' à 'char *'
-C:\Users\Administrateur\source\repos\GameOfLife\GameOfLife\GameOfLife.c(9,19): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
-C:\Users\Administrateur\source\repos\GameOfLife\GameOfLife\GameOfLife.c(33,9): warning C4013: 'plot' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Administrateur\source\repos\GameOfLife\GameOfLife\GameOfLife.c(25): warning C4715: 'initLife' : les chemins de contrôle ne retournent pas tous une valeur
-GameOfLife.obj : error LNK2019: symbole externe non résolu _plot référencé dans la fonction _displayGen
-C:\Users\Administrateur\source\repos\GameOfLife\Debug\GameOfLife.exe : fatal error LNK1120: 1 externes non résolus
+C:\Users\Administrateur\source\repos\WorkCIR1\GameOfLife\GameOfLife\GameOfLife.c(4,52): warning C4133: '=' : types incompatibles - de 'int *' à 'char *'
+C:\Users\Administrateur\source\repos\WorkCIR1\GameOfLife\GameOfLife\GameOfLife.c(10,19): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
+  main.c
+  Génération de code en cours...
+C:\Users\Administrateur\source\repos\WorkCIR1\GameOfLife\GameOfLife\GameOfLife.c(28): warning C4715: 'initLife' : les chemins de contrôle ne retournent pas tous une valeur
+  GameOfLife.vcxproj -> C:\Users\Administrateur\source\repos\WorkCIR1\GameOfLife\Debug\GameOfLife.exe

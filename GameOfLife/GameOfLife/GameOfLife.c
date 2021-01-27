@@ -1,4 +1,5 @@
 #include "GameOfLife.h"
+
 int initLife(char** life, int sizeX, int sizeY) {
 	*life = (int*)malloc(sizeX * sizeY * sizeof(char));
 
@@ -8,11 +9,13 @@ int initLife(char** life, int sizeX, int sizeY) {
 		}
 		srand(time(NULL));
 		int i = 0;
+		int x;
+		int y;
 		while (i <= NBLIVES) {
-			int x = rand() % sizeX;
-			int y = rand() % sizeY;
-			if (*(*life + x * sizeX + y) != Alive) {
-				*(*life + x * sizeX + y) = Alive;
+			x = rand() % sizeX;
+			y = rand() % sizeY;
+			if (*((*life) + x * sizeX + y) != Alive) {
+				*((*life) + x * sizeX + y) = Alive; 
 				i++;
 			}
 		}
@@ -27,20 +30,20 @@ int initLife(char** life, int sizeX, int sizeY) {
 
 void displayGen(char* life, int sizeX, int sizeY) {
 	for (int i = 0; i<sizeX; i++) {
-		for (int j = 0; i<sizeY; j++){
+		for (int j = 0; j<sizeY; j++){
 			moveCursor(i, j);
-			if ((*life + i * sizeX + j) == Alive){
-				plot(Alive);
+			if (*(life + i * sizeX + j) == '*'){
+				plotChar(Alive);
 			}
 			else{
-				plot(Dead);
+				plotChar(Dead);
 			}
 		}
 	}
 }
 
 
-/*
+
 // calcul de la génération suivante
 
 int nextGen(char* gen1, char* gen2, int sizeX, int sizeY) {
@@ -48,7 +51,7 @@ int nextGen(char* gen1, char* gen2, int sizeX, int sizeY) {
 	// on crée dans gen2 les êtres vivants à partir de l'état du tableau Gen1
 	for (int l = 0; l < sizeY; l++) { // les variables l et c représentent la position d’une case en (ligne, colonne)
 		for (int c = 0; c < sizeX; c++) {
-			*(gen2 + (l * sizeX + c)) = lifeState(countNeighbours(gen1, sizeX, sizeY, c, l), *(Gen2 + (l * sizeX + c)));
+			*(gen2 + (l * sizeX + c)) = lifeState(countNeighbours(gen1, sizeX, sizeY, c, l), *(gen1 + (l * sizeX + c)));
 			if (*(gen2 + (l * sizeX + c)) == Alive) nbLives++;
 		}
 	}
@@ -68,10 +71,10 @@ char lifeState(int nbNeighbours, char state) {
 			newState = Dead;
 		}
 
-		if (state == Alive && (nbNeighbours == 3)) {
+		if (state == Dead && nbNeighbours == 3) {
 			newState = Alive;
 		}
-
+		
 		return(newState); //A VERIFIER
 }
 
@@ -91,21 +94,18 @@ int countNeighbours(char* life, int sizeX, int sizeY, int posX, int posY) {
 
 	int compte = 0;
 
-	for (int i = posX - 1; i < posX + 1; i++) {
-		for (int j = posY - 1; j < posY + 1; j++) {
+	for (int i = posX - 1; i <= posX + 1; i++) {
+		for (int j = posY - 1; j <= posY + 1; j++) {
 
-			if (i >=0 && j >=0 && i<sizeX && j<sizeY &&!(i==posX &j==posY)) {
-
-				if (life+(i*LifeSizeX+j)==Alive) { //Adresse life + i* la taille d'une ligne + j
+			if (i >=0 && j >=0 && i<sizeX && j<sizeY && !(i==posX && j==posY)) {
+				if (*(life+(i*LifeSizeX+j))==Alive) { //Adresse life + i* la taille d'une ligne + j
 					compte += 1;
 				}
 			}
-
-
 		}
 	}
-
+	return compte;
 
 }
-*/
+
 

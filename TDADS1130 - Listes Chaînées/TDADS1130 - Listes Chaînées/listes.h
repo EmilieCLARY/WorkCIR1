@@ -1,0 +1,38 @@
+#pragma once
+
+
+
+typedef struct SingleLinkedListElem {
+
+	int data;
+	struct SingleLinkedListElem* next;
+
+}SingleLinkedListElem;
+
+
+typedef struct LinkedList {
+
+	SingleLinkedListElem *head;
+	int size;
+	SingleLinkedListElem *tail;
+
+}LinkedList;
+
+
+LinkedList* NewLinkedList();
+
+SingleLinkedListElem* NewLinkedListItem(int value);
+
+
+int AjouterNouveauElemt(LinkedList* list, SingleLinkedListElem* elem);
+
+int EnleverElemt(LinkedList* list, SingleLinkedListElem* elem);
+
+int DisplayList(LinkedList* Liste);
+
+int InitRandLinkedList(LinkedList * List, int ListSize);
+
+SingleLinkedListElem *GetElementAt(LinkedList *Liste, int position);
+
+int insertElemAtLinkedListHead(LinkedList *list, SingleLinkedListElem *elem);
+

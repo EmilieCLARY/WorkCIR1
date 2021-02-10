@@ -52,7 +52,7 @@ int AjouterNouveauElemt(LinkedList* list, SingleLinkedListElem* elem) {
 }
 
 int EnleverElemt(LinkedList* list, SingleLinkedListElem* elem) {
-	/*-----------------Plusieurs cas d'erreur--------------*/
+	/*-----------------Plusieurs cas d'erreur------------------*/
 
 	//La liste n'exite pas
 	if (list == NULL) return(0);
@@ -84,9 +84,6 @@ int EnleverElemt(LinkedList* list, SingleLinkedListElem* elem) {
 	}
 
 
-
-
-
 	//Il est en tête, on supprime la tête
 
 	if (elem == list->head) {
@@ -108,7 +105,7 @@ int EnleverElemt(LinkedList* list, SingleLinkedListElem* elem) {
 
 
 	//S'il est en queue on supprime la queue
-	if ((previous != NULL) && (tmp == elem) && (tmp->next != NULL)) {
+	if ((previous != NULL) && (tmp == elem) && (tmp->next == NULL)) {
 
 		list->tail=previous;
 		previous->next = NULL;
@@ -132,8 +129,8 @@ int EnleverElemt(LinkedList* list, SingleLinkedListElem* elem) {
 }
 
 
-int DisplayList(LinkedList *Liste) {
-	
+int DisplayList(LinkedList* Liste) {
+
 	SingleLinkedListElem* maillonActu = Liste->head;
 
 	while (maillonActu != NULL) {
@@ -144,6 +141,76 @@ int DisplayList(LinkedList *Liste) {
 	}
 
 	printf("NULL");
+}
+
+
+int InitRandLinkedList(LinkedList * List, int ListSize){
+	srand(time(NULL));
+	int val;
+	for(int i = 0; i < ListSize; i++){
+		val = rand()%20;
+		SingleLinkedListElem* e = NewLinkedListItem(val);
+		AjouterNouveauElemt(List, e);
+	}
+	return(0);
+}
+
+
+SingleLinkedListElem *GetElementAt(LinkedList *Liste, int position){
+
+	SingleLinkedListElem* elem = Liste->head;
+
+	for (int i = 1; i < position; i++) {
+		elem = elem->next;
+	}
+	return(elem);
+}
+
+
+
+int insertElemAtLinkedListHead(LinkedList *list, SingleLinkedListElem *elem){
+
+	if (list == NULL) return(0);
+
+	list->size++;
+
+	if (list->head == NULL) {
+		list->head = elem;
+		list->tail = elem;
+	}
+
+	SingleLinkedListElem* tmp = list->head;
+	list->head = elem;
+	list->head->next = tmp;
+	
+	return(0);
+}
+
+
+int swapSingleLinkedListElements(LinkedList* liste, SingleLinkedListElem* elementA, SingleLinkedListElem* elementB){
+	SingleLinkedListElem* tmp = 0;
+	tmp = elementA;
+	elementB = elementA;
+	elementA = tmp;
+}
+
+
+int concatSingleLinkedLists(LinkedList* listC, LinkedList* listA, LinkedList* listB) {
+	
+	
+	for(int i = 1; i < listA->size; i++) {
+		while (listC->tail != NULL) {
+			SingleLinkedListElem* x = NewLinkedListItem(GetElementAt(listA,i));
+			AjouterNouveauElemt(listC, x);
+		}
+		
+	}
+	for(int j =listA->size; j < listB->size; j++){
+		while (listC->tail != NULL) {
+			SingleLinkedListElem* x = NewLinkedListItem(GetElementAt(listB, j));
+			AjouterNouveauElemt(listC, x);
+		}
+	}
 
 
 }

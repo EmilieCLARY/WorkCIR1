@@ -1,7 +1,6 @@
 #pragma once
 
 
-
 typedef struct SingleLinkedListElem {
 
 	int data;
@@ -36,3 +35,6 @@ SingleLinkedListElem *GetElementAt(LinkedList *Liste, int position);
 
 int insertElemAtLinkedListHead(LinkedList *list, SingleLinkedListElem *elem);
 
+int swapSingleLinkedListElements(LinkedList* liste, SingleLinkedListElem* elementA, SingleLinkedListElem* elementB);
+
+int concatSingleLinkedLists(LinkedList* listC, LinkedList* listA, LinkedList* listB);

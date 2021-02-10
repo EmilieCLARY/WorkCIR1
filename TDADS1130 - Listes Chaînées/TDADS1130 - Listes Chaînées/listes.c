@@ -129,7 +129,7 @@ int EnleverElemt(LinkedList* list, SingleLinkedListElem* elem) {
 }
 
 
-int DisplayList(LinkedList* Liste) {
+void DisplayList(LinkedList* Liste) {
 
 	SingleLinkedListElem* maillonActu = Liste->head;
 

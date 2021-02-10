@@ -131,16 +131,18 @@ int EnleverElemt(LinkedList* list, SingleLinkedListElem* elem) {
 
 void DisplayList(LinkedList* Liste) {
 
-	SingleLinkedListElem* maillonActu = Liste->head;
+	if (Liste != NULL) {
+		SingleLinkedListElem* maillonActu = Liste->head;
 
-	while (maillonActu != NULL) {
+		while (maillonActu != NULL) {
 
-		printf("%d -> ", maillonActu->data);
-		maillonActu = maillonActu->next;
+			printf("%d -> ", maillonActu->data);
+			maillonActu = maillonActu->next;
 
+		}
+
+		printf("NULL");
 	}
-
-	printf("NULL");
 }
 
 

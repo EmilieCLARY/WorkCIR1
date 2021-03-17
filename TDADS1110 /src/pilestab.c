@@ -51,18 +51,24 @@ int push(Stack *stack, int value) {
 }
 // récupère la valeur au sommet de la pile
 int pull(Stack *stack, int *value) {
-if (!isStackEmpty(stack)) {
-// COMPLETER LE CODE ICI ************************
+    if (!isStackEmpty(stack)) {
+    // COMPLETER LE CODE ICI ************************
 
+        int NbrDepile = *value;
 
-return(EXIT_SUCCESS);
-}
-return(EXIT_FAILURE);
-}
+        stack->stackNbElemts=stack->stackNbElemts-1;
+
+        return(EXIT_SUCCESS);
+    }
+
+    return(EXIT_FAILURE);
+  }
 
 int peek(Stack *stack, int *value) {   
     if (!isStackEmpty(stack)) {
         // COMPLETER LE CODE ICI ************************
+
+
         
     }
     return(EXIT_SUCCESS);

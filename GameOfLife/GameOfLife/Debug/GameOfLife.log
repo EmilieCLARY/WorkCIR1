@@ -1,7 +1,0 @@
-﻿  GameOfLife.c
-C:\Users\Administrateur\source\repos\WorkCIR1\GameOfLife\GameOfLife\GameOfLife.c(4,52): warning C4133: '=' : types incompatibles - de 'int *' à 'char *'
-C:\Users\Administrateur\source\repos\WorkCIR1\GameOfLife\GameOfLife\GameOfLife.c(10,19): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
-  main.c
-  Génération de code en cours...
-C:\Users\Administrateur\source\repos\WorkCIR1\GameOfLife\GameOfLife\GameOfLife.c(28): warning C4715: 'initLife' : les chemins de contrôle ne retournent pas tous une valeur
-  GameOfLife.vcxproj -> C:\Users\Administrateur\source\repos\WorkCIR1\GameOfLife\Debug\GameOfLife.exe

@@ -1,0 +1,31 @@
+#######################################
+# Syntax Coloring Map For ISEN        #
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+ISEN				KEYWORD1
+ISENLiquidCrystal	KEYWORD1
+Clock				KEYWORD1
+IOstd				KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+clear_line		KEYWORD2
+
+begin			KEYWORD2
+pinMode		KEYWORD2
+digitalRead	KEYWORD2
+digitalWrite	KEYWORD2
+clear			KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+Monday			LITERAL1
+Sunday			LITERAL1

@@ -1,0 +1,34 @@
+#######################################
+# Syntax Coloring Map For MCP23x08    #
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MCP23x08		KEYWORD1
+MCP23008_I2C	KEYWORD1
+MCP23S08_SPI	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+mode	KEYWORD2
+transfer	KEYWORD2
+
+Write		KEYWORD2
+Read	KEYWORD2
+Setup_IODIR	KEYWORD2
+Write_GPIO	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+Spi	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

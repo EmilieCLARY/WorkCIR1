@@ -1,0 +1,112 @@
+@font-face {
+	font-family: 'Muli';
+	src: url(../vendor/fonts/Nunito/Nunito-Regular.ttf) format("truetype");
+	font-weight: normal;
+	font-style:normal;
+}
+@font-face {
+	font-family: 'Muli';
+	src: url(../vendor/fonts/Nunito/Nunito-Bold.ttf) format("truetype");
+	font-weight: bold;
+	font-style:normal;
+}
+@font-face {
+	font-family: 'Muli';
+	src: url(../vendor/fonts/Nunito/Nunito-Italic.ttf) format("truetype");
+	font-weight: normal;
+	font-style:italic;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'MuNunitoli', sans-serif;
+  color: #555;
+}
+
+h1, h2, h3 {
+  line-height: 1.3em;
+  margin: 20px 0;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+header {
+  text-align: center;
+}
+
+header .fas, header .far {
+	margin-right: 3px;
+}
+
+main {
+	min-height: 75vh;
+	margin-bottom: 30px;
+}
+
+/* Styles de la page login */
+.login main {
+  position: relative;
+  top: 30%;
+  transform: translateY(30%);
+}
+
+.login form {
+  width: 90%;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.login form button {
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 768px) {
+  #dashboard div {
+    flex-basis: 30%;
+  }
+}
+
+#dashboard ul {
+	list-style: none;
+  padding-left: 0;
+}
+
+#dashboard a {
+	color: white;
+}
+
+#dashboard a:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+fieldset {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a, footer a:hover {
+  color: inherit;
+}

@@ -1,79 +1,31 @@
-#include<stdio.h>
+#pragma once
+
 #include<stdlib.h>
-#include<string.h>
+#include<stdio.h>
+#include<time.h>
+#include<locale.h>
+#include<stdbool.h>
 
+// définition du symbole de dépassement de pile
+#define STACKOVERFLOW -1
 
-typedef struct ElementListe{
-  char *donnee;
-  struct ElementListe *suivant;
-} Element;
+// définition d'une pile à l'aide d'une structure
+typedef struct Stack {
+	
+	int *tab;			// le tableau de données qu'il faut allouer
+	int stackMaxSize;	// taille max
+	int stackNbElemts;	// nb d'éléments actuellement dans la pile
 
-typedef struct ListeRepere{
-  Element *debut;
-  int taille;
-} Pile;
+} Stack;
 
+// implémentation des Piles avec des tableaux dynamiques
 
-/* initialisation */
-void initialisation (Pile *tas);
-
-/* EMPILER*/
-int empiler (Pile *tas, int *donnee);
-
-/* DEPILER*/
-int depiler (Pile *tas);
-
-/* Affichage de élément en haut de la pile (LastInFirstOut) */
-#define pile_donnee(tas)  tas->debut->donnee
-
-/* Affiche la pile */
-void affiche (Pile *tas);
-
-/***********************\
-
- * pile_function.h     *
-\***********************/
-
-void initialisation (Pile * tas){
-  tas->debut = NULL;
-  tas->taille = 0;
-}
-
-/* empiler (ajouter) un élément dans la pile */
-int empiler (Pile * tas, int *donnee){
-  Element *nouveau_element;
-  if ((nouveau_element = (Element *) malloc (sizeof (Element))) == NULL)
-    return -1;
-  if ((nouveau_element->donnee = (int *) malloc (50 * sizeof (int)))
-      == NULL)
-    return -1;
-  strcpy (nouveau_element->donnee, donnee);
-  nouveau_element->suivant = tas->debut;
-  tas->debut = nouveau_element;
-  tas->taille++;
-}
-
-/* depiler (supprimer un élément de la pile */
-int depiler (Pile * tas){
-  Element *supp_element;
-  if (tas->taille == 0)
-    return -1;
-  supp_element = tas->debut;
-  tas->debut = tas->debut->suivant;
-  free (supp_element->donnee);
-  free (supp_element);
-  tas->taille--;
-  return 0;
-}
-
-/* affichage de la pile */
-void affiche (Pile * tas){
-  Element *courant;
-  int i;
-  courant = tas->debut;
-
-  for(i=0;i<tas->taille;++i){
-    printf("\t\t%s\n", courant->donnee);
-    courant = courant->suivant;
-  }
-}
+// création d'un pile
+void NewStack(Stack **stack, int initialStackSize);
+bool isStackFull(Stack *stack);
+bool isStackEmpty(Stack *stack);
+int push(Stack *stack, int value);
+int pull(Stack *stack, int *value);
+int peek(Stack *stack, int *value);
+void displaystack(Stack* stack);
+bool isPalindrome(char* word);

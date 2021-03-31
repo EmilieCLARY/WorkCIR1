@@ -4,20 +4,13 @@
 int main ()
 {
 
-  Pile *tas;
+  Stack *tas;
   char *nom;
 
   int i = 0;
   char* chaine = "12 5  + 3 4 + *";
   char nb[20];
   int indice = 0;
-
-  //Test
-  if ((tas = (Pile *) malloc (sizeof (Pile))) == NULL)
-    return -1;
-  if ((nom = (char *) malloc (50 * sizeof (char))) == NULL)
-    return -1;
-  initialisation (tas);
 
     //Code du Pseudo Language
     for (int i = 0; i<strlen(chaine); i++){
@@ -28,10 +21,10 @@ int main ()
       else{
           if (_countof(nb)>=1){
               atoi(nb);
-              empiler(tas, nb);
+              push(tas, nb);
           }
-          int a = depiler(tas);
-          int b = depiler(tas);
+          int a = pull(tas, &a);
+          int b = pull(tas, &b);
           int c;
           switch (chaine[i])
           {
@@ -56,7 +49,7 @@ int main ()
               return(-1);
               break;
           }            
-          empiler(tas, &c);
+          push(tas, &c);
 
       }
     }

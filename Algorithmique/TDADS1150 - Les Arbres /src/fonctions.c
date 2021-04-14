@@ -93,37 +93,40 @@ void Multiplicateur2Affichage(noeud * tmp, int profondeur){
     }
 }
 
-/*int ProfondeurMax(noeud * tmp){
-	int depth = -1;
-	if (n != NULL) {
-		if (deepestNode(n->lchild) > deepestNode(n->rchild)) {
-			depth = deepestNode(n->lchild);
+int ProfondeurMax(noeud * tmp){
+	
+    int prof = -1;
+	if (tmp != NULL) {
+		if (ProfondeurMax(tmp->lchild) > ProfondeurMax(tmp->rchild)) {
+			prof= ProfondeurMax(tmp->lchild);
 		}
 		else
 		{
-			depth = deepestNode(n->rchild);
+			prof = ProfondeurMax(tmp->rchild);
 		}
-		depth++;	
+		prof++;	
 	}
-	return depth;
-}*/
+	return prof;
+}
 
 int ValeurMax(noeud * tmp){
 
     int value = 0;
 
-	if (tmp != NULL){
-		
-        value = tmp->data;
-		
-        if (tmp < ValeurMax(tmp->lchild)) {
-			return ValeurMax(tmp->lchild);
-		}
-		else if (value < ValeurMax(tmp->rchild))
-		{
-			return ValeurMax(tmp->rchild);
-		}
-	}
-	return(value);
+    if (tmp != NULL){
 
+        value = tmp->data;
+
+        int left = ValeurMax(tmp->lchild);
+        int right = ValeurMax(tmp->rchild);
+        
+        if (value < left) {
+            value = left;
+        }
+        else if (value < right)
+        {
+            value = right;
+        }
+    }
+    return(value);
 }

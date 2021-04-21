@@ -1,4 +1,7 @@
 #include "fonctions.h"
+#include "genericStackAndQueue.h"
+
+// Fonctions Arbres
 
 noeud* CreateNode(int valeur){
 
@@ -129,4 +132,49 @@ int ValeurMax(noeud * tmp){
         }
     }
     return(value);
+}
+
+void ParcoursLargeur(arbre tr) {
+
+    Queue* file;
+    NewQueue(&file, 6);
+    noeud* currentNode = tr.root;
+    queue(file, currentNode);
+
+    while (!isQueueEmpty(file)) {
+        deQueue(file, &currentNode);
+
+        if (currentNode->lchild != NULL) {
+            queue(file, currentNode->lchild);
+        }
+
+        if (currentNode->rchild != NULL) {
+            queue(file, currentNode->rchild);
+        }
+
+        printf("%d ", currentNode->data);
+    }
+}
+
+void ParcoursProfondeur(arbre tr) {
+
+    Stack* pile;
+    NewStack(&pile, 6);
+    noeud* currentNode = tr.root;
+    push(pile, currentNode);
+
+    while (!isStackEmpty(pile)) {
+
+        pull(pile, &currentNode);
+
+        if (currentNode->rchild != NULL) {
+            push(pile, currentNode->rchild);
+        }
+
+        if (currentNode->lchild != NULL) {
+            push(pile, currentNode->lchild);
+        }
+
+        printf("%d ", currentNode->data);
+    }
 }

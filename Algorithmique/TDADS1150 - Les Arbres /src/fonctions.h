@@ -4,13 +4,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+#include "genericStackAndQueue.h"
 
 typedef struct noeud{
     int data;
     struct noeud *rchild;
     struct noeud *lchild;
 } noeud;
-
 
 typedef struct arbre{
     noeud *root;
@@ -32,4 +32,8 @@ void Multiplicateur2Affichage(noeud * tmp, int profondeur);
 
 int ProfondeurMax(noeud * tmp);
 
-int ValeurMax(noeud * tmp, int valeur);
+int ValeurMax(noeud * tmp);
+
+void ParcoursLargeur(arbre tr);
+
+void ParcoursProfondeur(arbre tr);

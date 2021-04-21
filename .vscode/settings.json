@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "filestab.h": "c"
+        "filestab.h": "c",
+        "fonctions.h": "c"
     }
 }

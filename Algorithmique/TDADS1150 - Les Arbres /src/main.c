@@ -1,5 +1,5 @@
 #include "fonctions.h"
-
+#include "genericStackAndQueue.h"
 
 int main(){
 
@@ -66,5 +66,8 @@ int main(){
 
     printf("%d \n\n", NodeCounter(noeud10));
 
-    Multiplicateur2Affichage(noeud10, 3);
+    //Multiplicateur2Affichage(noeud10, 3);
+
+    printf("%d\n\n", ValeurMax(noeud10));
+    printf("%d", ProfondeurMax(noeud10));
 }

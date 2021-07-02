@@ -1,0 +1,332 @@
+# To add a new cell, type '# %%'
+# To add a new markdown cell, type '# %% [markdown]'
+# %% [markdown]
+# <p><span style="font-size: large; background-color: #ffffff; color: #000000;"><strong>Consignes :</strong></span></p>
+# <ul>
+# <li><span style="font-size: large; background-color: #ffffff; color: #000000;"><strong><strong>Renommer ce fichier en ordre alphab&eacute;tique avec le numéro i de votre Tiers <span style="color: #ff0000;">Ti_nom1-nom2-TP12</span></strong></strong></span></li>
+# <li><span style="font-size: large; background-color: #ffffff; color: #000000;"><strong><strong><strong>TP &agrave; rendre sur Teams&nbsp;<span><span style="color: #ff0000;">pour le 29 avril</span>.</span>&nbsp;</strong></strong></strong></span></li>
+# <li><span style="font-size: large; background-color: #ffffff; color: #000000;"><strong>TP &agrave; faire en groupe de 2. Le groupe de travail est le m&ecirc;me pour toute l'ann&eacute;e.</strong></span></li>
+# <li><span style="font-size: large; background-color: #ffffff; color: #ff0000;"><span style="color: #000000;"><strong>&Agrave; compl&eacute;ter :</strong></span></span></li>
+# </ul>
+# <p><span style="font-size: large; background-color: #ffffff; color: #ff0000;"><strong>NOM PRENOM 1 : CLARY Emilie<br /></strong></span></p>
+# <p><span style="font-size: large; background-color: #ffffff; color: #ff0000;"><strong>NOM PRENOM 2 : RIGAUD Mathilde</strong></span></p>
+# <p><span style="font-size: large; background-color: #ffffff; color: #ff0000;"><strong>NOM PRENOM 3 : VAN BOXEM Rémi</strong></span></p>
+# <p>&nbsp;</p>
+# <p><br /><span style="font-size: large;"><strong></strong><strong>TP 12 : Diagonalisation<br /></strong></span></p>
+# 
+# La commande <b>VectorSpace(K,n)</b> pérmet de définir l'espace vectoriel $K^n$.
+# 
+# Par exemple on peut définir :
+# 
+# 
+# 
+
+# %%
+E = VectorSpace(QQ,3) #ou plus simplement : E = QQ^3
+E
+
+# %% [markdown]
+# <p><span style="font-size: medium;">La commande <span style="font-family: courier\ new, courier;"><strong>MatrixSpace(K,n,p)</strong></span> permet de d&eacute;finir l'espace des matrices &agrave; $n$ lignes et $p$ colonnes &agrave; coefficients dans $K$ :</span></p>
+
+# %%
+M22Q = MatrixSpace(QQ,2,2) ;  M22Q
+
+# %% [markdown]
+# <p><span style="font-size: medium;">La dimension d'un espace peut &ecirc;tre obtenue par <span style="font-family: courier\ new, courier;"><strong>E.dimension() <br /></strong></span><br /></span></p>
+
+# %%
+E.dimension()
+
+
+# %%
+M22Q.dimension()
+
+# %% [markdown]
+# <p><span style="font-size: medium;">Tout espace vectoriel poss&egrave;de une base canonique.</span></p>
+
+# %%
+E.basis()
+
+
+# %%
+M22Q.basis()
+
+# %% [markdown]
+# <p><span style="font-size: medium;">La m&eacute;thode <span style="font-size: medium;"><span style="font-family: courier\ new, courier;"><strong>coordinates</strong></span></span> donne les coordonn&eacute;es d'un vecteur dans la base utilisateur.</span></p>
+# <p><span style="font-size: medium;"><br /></span></p>
+
+# %%
+w = vector([3,2,6])
+E.coordinates(w) # sous forme de liste
+
+# %% [markdown]
+# 
+# 
+# 
+
+# %%
+E.coordinate_vector(w) # sous forme de vecteur
+
+# %% [markdown]
+# <p>Si on veut d&eacute;finir une base diff&eacute;rente de celle canonique :</p>
+
+# %%
+F = VectorSpace(QQ,2) ; print F
+print F.basis()
+
+e1p = vector([1,1])
+e2p = vector([1,-1])
+
+G = F.subspace_with_basis([e1p,e2p]) ; G
+
+
+# %%
+u = vector([-2,1])
+F.coordinates(u)
+
+
+# %%
+G.coordinates(u)
+
+
+# %%
+G.echelon_coordinates(u) #donne les coordonées dans la base canonique
+
+# %% [markdown]
+# 
+# <p><span style="font-size: medium;"><br /></span></p>
+# <p><span style="font-size: large;"><strong>Valeurs propres, vecteurs propres, diagonalisation</strong></span></p>
+# <p><span style="font-size: medium;">Soit $f: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ l'application lin&eacute;aire dans la base canonique : </span></p>
+# <p><span style="font-size: medium;">$\left[ \begin{matrix} 4 & 1 & -4 \\ 8 & 3 & -10 \\ 5 & 1 & -5 \end{matrix} \right]$</span></p>
+# %% [markdown]
+# 
+# 
+
+# %%
+A = matrix(3,3,[4,1,-4,8,3,-10,5,1,-5]) ; A
+
+# %% [markdown]
+# <p>Nous cherchons une matrice inversible $P$ telle que $P^{-1} A P = D$ soit diagonale.</p>
+# <p>Pour cela nous calculons le polyn&ocirc;me caracteristique &agrave; l'aide de la commande suivante :</p>
+# 
+
+# %%
+charpoly(A) # ou A.characteristic_polynomial()
+
+# %% [markdown]
+# <p>ou en utilisant sa d&eacute;finition :</p>
+
+# %%
+Pc = det(x - A) ; Pc
+
+
+# %%
+factor(Pc)
+
+
+# %%
+factor(A.characteristic_polynomial())
+
+# %% [markdown]
+# <p><span style="font-size: large;">On calcule les valeurs propres de $f$ par la commande :</span></p>
+
+# %%
+A.eigenvalues() # eigen = propre en allemand
+
+# %% [markdown]
+# <p><span style="font-size: large;">Ou comme racines du polyn&ocirc;me caract&eacute;ristique de $A $ :</span></p>
+
+# %%
+H = A.charpoly(x) ; print H
+H.roots() # donne les racines de H avec leur multiplicité
+
+# %% [markdown]
+# <p>Les valeurs propres sont donc: $2$,&nbsp;$1$&nbsp; et $-1$ avec multiplicit&eacute; alg&eacute;brique $1$.</p>
+# <p>Recherchons des vecteurs propres pour chaque valeur propre $\lambda$.</p>
+# <p><strong>Attention:</strong>&nbsp;<span style="font-family: 'courier new', courier;">A.kernel()&nbsp;</span>calcule par d&eacute;faut le&nbsp;<em>noyau &agrave; gauche</em>&nbsp;de $A$,&nbsp;<em>i.e</em>. l'ensemble des vecteurs (lignes) $\mathbf{v}$ tels que $\mathbf{v} A = \mathbf{0}$. Vaut mieux explicitement sp&eacute;cifier celui qui nous int&eacute;resse:&nbsp;<span style="font-family: 'courier new', courier;">left_kernel() ou&nbsp;right_kernel()</span>.</p>
+
+# %%
+(A-2).right_kernel() # lambda = 2
+
+
+# %%
+v = (A-2).right_kernel().basis()[0]
+A*v == 2*v # ok
+
+
+# %%
+(A - 1).right_kernel() # lambda = 1
+
+
+# %%
+(A + 1).right_kernel() # lambda = -1
+
+# %% [markdown]
+# <p>On trouve $3$ vecteurs propres ind&eacute;pendants, la matrice $M$ est donc diagonalisable. La matrice $P$ que l'on cherche correspond &agrave; la matrice de passage de la base canonique vers une base $\mathcal{B}$ compos&eacute;e de vecteurs propres.</p>
+
+# %%
+B = []
+for vp in [2, 1,-1]:
+    B += (A - vp).right_kernel().basis()
+B
+
+# %% [markdown]
+# <p>$\mathcal{B}$ est une famille de vecteurs, nous voulons la matrice $P$ dont les colonnes sont les coordonn&eacute;es de ces vecteurs par rapport &agrave; la base canonique.</p>
+
+# %%
+P = transpose(matrix(B)); P
+
+# %% [markdown]
+# <p>V&eacute;rification:</p>
+
+# %%
+P^-1*A*P
+
+# %% [markdown]
+# <p>&nbsp;</p>
+# <p><span style="font-size: large;">On constate que $A$ est diagonalisable sur $\mathbb{R}$ (pourquoi ?). On peut construire une base de $\mathbb{R}^3$ constitu&eacute;e de vecteurs propres avec la commande :<br /></span></p>
+
+# %%
+V = A.eigenvectors_right() ; V
+
+# %% [markdown]
+# <p><span style="font-size: large;">qui donne dans $V$ une liste de triplets : valeur propre, liste de vecteurs, multiplicit&eacute;. La base cherch&eacute;e est :</span></p>
+
+# %%
+Bp = [V[i][1][0] for i in range(3)] ; Bp
+
+# %% [markdown]
+# <p><span style="font-size: large;">La matrice de passage $P$ de la base canonique $B$ &agrave; la base $B' $ est donc :<br /></span></p>
+
+# %%
+P = matrix(Bp).transpose() ; P
+
+# %% [markdown]
+# <p><span style="font-size: large;">On v&eacute;rifie que, dans la base $B'$, la matrice $D$ de $f$ est diagonale :</span></p>
+
+# %%
+D = P^-1 * A * P ; D
+
+# %% [markdown]
+# <p><strong><span style="text-decoration: underline;">Pour r&eacute;sumer</span></strong></p>
+# <p>Comment utiliser Sage pour diagonaliser une matrice, c'est-&agrave;-dire chercher une matrice $P$ inversible telle que $P^{-1}AP$ soit diagonale ?</p>
+# <p>Pour les valeurs propres :</p>
+# <ol>
+# <li>On d&eacute;finit la matrice : <span style="font-family: courier new,courier;">A=matrix(.....)</span></li>
+# <li>On calcule le polyn&ocirc;me caracteristique : <span style="font-family: courier new,courier;">charpoly(A) (ou&nbsp; A.characteristic_polynomial()) ou det(x-A)</span></li>
+# <li>On factorise le polyn&ocirc;me caracteristique pour lire les valeurs propres de $A$ : <span style="font-family: courier new,courier;">factor(charpoly(A))</span><strong><em></em></strong></li>
+# </ol>
+# <p>On peut v&eacute;rifier nos calculs avec la commande de Sage :<span style="font-family: courier new,courier;">&nbsp;A.eigenvalues()&nbsp;</span> ("eigen = propre en allemand")</p>
+# <p>Pour les vecteurs propres :</p>
+# <ol>
+# <li>On calcule le vecteur propre pour chaque valeur propre :&nbsp;<span>A.kernel()</span>&nbsp;(help(kernel))<strong>&nbsp;<br /></strong></li>
+# <li><strong>Attention :</strong><span>&nbsp;A.kernel()</span>&nbsp; calcule par d&eacute;faut le&nbsp;<em>noyau &agrave; gauche</em>&nbsp;de $A$,&nbsp;<em>i.e</em>. l'ensemble des vecteurs (lignes) $\mathbf{v}$ tels que $\mathbf{v} A = \mathbf{0}$. Donc on explicite celui qui nous int&eacute;resse:&nbsp;<span>left_kernel(</span>) ou&nbsp;<span>right_kernel()</span>.</li>
+# <li>Pour extraire le vecteur :&nbsp;<span>(A - lambda).right_kernel().basis()</span></li>
+# <li>Si elle est diagonalisable, on cr&eacute;e la matrice de passage $P$ de la base canonique vers une base $B$ form&eacute;e par les vecteurs propres.</li>
+# <li>On v&eacute;rifie que $P^{-1}AP$ soit une matrice diagonale.</li>
+# </ol>
+# <p>&nbsp;</p>
+# <p>&nbsp;</p>
+# <p><span style="text-decoration: underline;">EXERCICE 1</span></p>
+# <p>Dans $\mathbb{R}^3$ muni de sa base canonique $B=\{i,j,k\}$, on consid&egrave;re les vecteurs suivants : $u=2i-j+k$, $v=i+2j-k$ et $w=i+j-3k$.</p>
+# <p>Montrer que la famille $\{u,v,w\}$ est une base de&nbsp;$\mathbb{R}^3$ et d&eacute;terminer les coordonn&eacute;es du vecteur $x=2i+3j+4k$ dans la base $B'=\{u,v,w\}$.</p>
+
+# %%
+
+
+# %% [markdown]
+# <p><span style="text-decoration: underline;">EXERCICE 2</span></p>
+# <p>a) &Eacute;crire une fonction&nbsp;<span>diagonalize(<em>A</em>)</span>&nbsp;qui renvoie une liste&nbsp;<span>[<em>D</em>,&nbsp;<em>P</em>]</span>&nbsp;form&eacute;e d'une matrice diagonale $D$ et d'une matrice inversible $P$ telle que $P^{-1} A P = D$; si la matrice n'est pas diagonalisable, un message d'erreur est affich&eacute;.</p>
+
+# %%
+
+
+# %% [markdown]
+# <p><span id="cell_outer_51">b) Essayer votre fonction sur les matrices suivantes (comparer avec <span style="font-family: 'courier new', courier;"><em>A</em>.right_eigenmatrix()</span>).</span></p>
+
+# %%
+A1 = matrix(QQ, [[1, 2], [3,2]]); A1
+
+
+# %%
+
+
+
+# %%
+A2 = matrix(QQ, [[16,9,83,-33,-24,8], [13,5,56,-27,-18,4], [37,29,236,-83,-64,26], [-66,-45,-385,145,108,-40], [221,157,1323,-487,-367,140], [-40,-40,-302,96,78,-36]]); A2
+
+
+# %%
+
+
+# %% [markdown]
+# <p><span style="text-decoration: underline;">EXERCICE 3</span></p>
+# <p>&nbsp;</p>
+# <p>Consid&eacute;rons la matrice $M$ suivante : $\left[\begin{matrix} 3 & 0 & 0 \\ 1 & 3 & 1 \\ -1 & 0 & 2 \end{matrix}\right].$</p>
+# <p>Calculer la puissance $M^7$ en utilisant sa matrice diagonale et de passage. &Eacute;crivez aussi la relation que vous utilisez pour ce calcul.</p>
+
+# %%
+
+
+# %% [markdown]
+# <p><span style="text-decoration: underline;">EXERCICE 4</span>&nbsp;: <strong>M&Eacute;THODE DE LA PUISSANCE</strong><span style="text-decoration: underline;"><br /></span></p>
+# <p><br style="text-decoration: underline;" /><span style="color: #000000;">&Eacute;crire la fonction <strong>eigpower(A,tol,nmax)</strong> qui &eacute;value num&eacute;riquement une valeur propre d'une matrice.<br /> Elle calcule avec la m&eacute;thode de la puissance la valeur propre de $A$ de module maximal &agrave; partir d'une donn&eacute;e initial qui par d&eacute;faut est le vecteur constitu&eacute; de 1. <br /> Cette fonction utilise la tol&eacute;rance <em>tol</em> pour l'erreur absolue, un nombre maximal d'iteration <em>nmax</em> et d&eacute;marre d'un <em>vecteur initial v0</em>.<br /> La fonction retourne le vecteur propre <em>v</em> tel que $A*v=\lambda *v$ et le num&eacute;ro de l'iteration &agrave; laquelle $v$ a &eacute;t&eacute; calcul&eacute;.<br /><br />Des suggestions :</span></p>
+# <ul>
+# <li><span style="color: #000000;">D&eacute;finir $v0$ un vecteur unitaire colonne de la m<span class="st"><em>&ecirc;</em></span>me taille que la matrice $A$.</span></li>
+# <li><span style="color: #000000;">Calculer le produit de la matrice $A$ par $v0$ : $vProd =A*v0$.</span></li>
+# <li><span style="color: #000000;">On normalise (<span style="font-family: courier\ new, courier;">norm</span>) le vecteur : <span>$v0= vProd/norm(vProd)$</span><br /></span></li>
+# <li><span style="color: #000000;">Calculer $\lambda = v0^T * A*v0$. <br style="color: #000000;" /></span></li>
+# <li><span style="color: #000000;">Jusqu'&agrave; quand l'erreur n'est pas inferieur &agrave; la tol et on n'a pas rejoint le nombre maximales d'iterations, calculer $vProd=A*v0$ et $\lambda=v0^T * A* v0$ <br /></span></li>
+# <li><span style="color: #000000;">Returner $\lambda $ et le nombre d'iterations effectu&eacute;es.<br /></span></li>
+# </ul>
+# <p><span style="color: #000000;">Testez votre fonction avec la&nbsp; matrice $B$ ci-dessous et comparez votre r&eacute;sultat avec la commande <span style="font-family: courier new,courier;">B.eigenvalues()</span></span></p>
+
+# %%
+
+
+
+# %%
+B = matrix(QQ, [[30, 2,3,13], [5,11,10,8],[9,7,6,12],[4,14,15,1]]); B
+
+
+# %%
+
+
+# %% [markdown]
+# <p><span style="text-decoration: underline;">EXERCICE 5 : <span style="text-decoration: underline;"> CONNECTIONS INTERURBAINES</span><br /></span></p>
+# <div class="sagews-output-html"><span style="color: #000000;">Etant donn&eacute; $n$ villes, on note $A$ la matrice dont les coefficients $a_{ij}$ valent 1 si la $i-$&egrave;me ville est directement reli&eacute;e &agrave; la $j-$&egrave;me, et 0 sinon.<br />On peut montrer que les composantes d'un vecteurs propre <strong>x</strong> de norme 1 associ&eacute; &agrave; la valeur propre la plus grande donnent le taux d'accessibilit&eacute; (qui est une mesure de la facilit&eacute; d'acc&egrave;s) des diverses villes.<br />Calculer ce vecteur dans le cas des connections ferroviaires entre les onze plus grandes villes de Lombardie.<img src=lombardie.jpg></img> <br /></span></div>
+# <div class="sagews-output-html"><span><br /></span></div>
+# <div class="sagews-output-html"><span>On note $A\in M_{11 \times 11}(\mathbb{R})$ la matrice associ&eacute;e au r&eacute;seau ferroviaire de Lombardie, i.e. la matrice dont les coefficients $a_{ij}$ sont &eacute;gaux &agrave; 1 s'il y a une connection directe entre la ville $i$ et la ville $j$, et 0 sinon.<br />En posant <span style="font-family: courier new,courier;">tol=1.e-12</span> et $v0$ le vecteur unitaire avec 11 composantes, calculer avec la m&eacute;thode de la puissance (fonction <span style="font-family: courier new,courier;">eigpower</span> de l'exercice 3) l'approximation d'un vecteur propre associ&eacute; &agrave; la valeur propre de $A$ de plus grand module. <br />En d&eacute;duire la ville la mieux et la moins bien desservie.</span></div>
+
+# %%
+
+
+# %% [markdown]
+# <p><span style="color: #ff0000;"><strong><em><span style="text-decoration: underline;">CURIOSIT&Eacute;</span>&nbsp;: L'alg&egrave;bre lineaire &agrave; la base de Google!</em></strong></span></p>
+# <p><span id="cell_outer_73"><a href="http://www.incomediary.com/wp-content/uploads/2012/02/larry-page-sergey-brin.jpg">Deux jeunes docteurs en informatique</a> ont un jour eu l'id&eacute;e de classer les pages web par ordre de pertinence (puis ils ont fond&eacute; une compagnie pour mettre en pratique <a href="http://en.wikipedia.org/wiki/Pagerank">leur id&eacute;e</a> et &ccedil;a a <a href="https://www.google.com/finance?chddm=953649&amp;q=GOOG">plut&ocirc;t pas mal march&eacute;</a>). </span></p>
+# <p><span>Leur id&eacute;e &eacute;tait de consid&eacute;rer qu'une page est pertinente si elle est r&eacute;f&eacute;renc&eacute;e par beaucoup de pages pertinentes. On peut impl&eacute;menter cette id&eacute;e un peu circulaire gr&acirc;ce &agrave; la notion de marche al&eacute;atoire: on repr&eacute;sente le web par un graphe orient&eacute; (exemples de graphe : connections interurbaines des villes de Lombardie), chaque sommet repr&eacute;sente une page et les ar&ecirc;tes repr&eacute;sentent les hyperliens. On imagine quelqu'un se baladant al&eacute;atoirement de page en page; &agrave; la longue il finira par tomber sur les pages les plus pertinentes puisqu'elles vont avoir tendance &agrave; attirer le trafic.</span></p>
+# <p>Voici comment on peut cr&eacute;er un<em> graphe non orient&eacute;</em> et sa matrice d'adjacence dans Sage :</p>
+
+# %%
+A = matrix([[0,1,1], [1,0,1], [1,1,0]])
+k = Graph(A) # graphe complet K_3
+k.show()
+
+
+# %%
+k.adjacency_matrix()
+
+# %% [markdown]
+# <p>Et voici comment un<em> graphe orient&eacute;</em> et sa matrice d'adjacence :</p>
+
+# %%
+g = DiGraph([(0,1), (0,2), (1,2), (2,1), (2,3), (1,3), (3,0), (3,1)])
+g.show()
+
+# %% [markdown]
+# <p><span style="color: #000000;">Vous disposez maintenant de (presque) tous les moyens (matrice d'adjacence d'un graphe, valeurs propres...) pour comprendre l'algorithme sur lequel se base la recherche des plus imposants moteurs de recherche : GOOGLE.</span></p>
+
+# %%
+
+
+

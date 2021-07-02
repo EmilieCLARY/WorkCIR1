@@ -1,0 +1,41 @@
+% Liste de paquets potentiellement utiles pour votre rédaction
+\documentclass[a4paper, oneside]{report}
+\usepackage[french]{babel}      % fonctionnalités en français
+\usepackage[utf8x]{inputenc}    % support de l'encodage utf8
+\usepackage{listings}           % permet d'insérer du code
+\usepackage{hyperref}           % liens
+\usepackage{subfigure}          % schémas
+\usepackage{amsmath}            % pour ajouter des équations 
+\usepackage{graphicx}           % pour \includegraphics 
+\usepackage{appendix}           % pour ajouter des appendices à votre rapport
+\usepackage[T1]{fontenc}
+
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1cm]{geometry} 
+
+
+% Variables à remplacer :
+\newcommand{\anneeUniversitaire}{2020/2021} % 20XX/20XX
+\newcommand{\prenomNOM}{CLARY Emilie} % prénom NOM
+\newcommand{\dateDebutStage}{14/06/2021} % jour/mois/année
+\newcommand{\promo}{CIR 1 - Promotion 66}
+\newcommand{\dateFinStage}{09/07/2021 } % jour/mois/année
+\newcommand{\nomEntreprise}{Aéroport de Bordeaux-Mérignac}% Nom de l'entreprise en MAJUSCULES
+\newcommand{\sujetMission}{Stage Ouvrier} % Sujet de mission
+\newcommand{\directeurStage}{CORDEAU Nathalie}
+\newcommand{\tuteurEntreprise}{CLARY Serge}
+\newcommand{\tuteurEcole}{SAINI Laura}
+
+\begin{document}
+% Ajoutez vos sections/chapitres ici
+\input{title/title.tex}
+
+
+\tableofcontents
+\newpage
+\input{main/introduction.tex}
+
+\input{main/description.tex}
+
+
+\end{document}
+

@@ -4,7 +4,9 @@
 \usepackage[utf8x]{inputenc}    % support de l'encodage utf8
 \usepackage{listings}           % permet d'insérer du code
 \usepackage{hyperref}           % liens
-\usepackage{subfigure}          % schémas
+%\usepackage{subfigure}          % schémas
+\usepackage{subcaption}
+\usepackage{caption}
 \usepackage{amsmath}            % pour ajouter des équations 
 \usepackage{graphicx}           % pour \includegraphics 
 \usepackage{appendix}           % pour ajouter des appendices à votre rapport
@@ -34,8 +36,11 @@
 \newpage
 \input{main/introduction.tex}
 
+\newpage
+
 \input{main/description.tex}
 
+\newpage
 
 \end{document}
 

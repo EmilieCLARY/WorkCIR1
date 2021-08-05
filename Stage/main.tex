@@ -1,5 +1,4 @@
-% Liste de paquets potentiellement utiles pour votre rédaction
-\documentclass[a4paper, oneside]{article}
+\documentclass[a4paper, oneside]{report}
 \usepackage[french]{babel}      % fonctionnalités en français
 \usepackage[utf8x]{inputenc}    % support de l'encodage utf8
 \usepackage{listings}           % permet d'insérer du code
@@ -10,6 +9,7 @@
 \usepackage{amsmath}            % pour ajouter des équations 
 \usepackage{graphicx}           % pour \includegraphics 
 \usepackage{appendix}           % pour ajouter des appendices à votre rapport
+\usepackage{pdfpages}           % pour inclure des pdfs
 \usepackage[T1]{fontenc}
 
 \usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1cm]{geometry} 
@@ -47,6 +47,11 @@
 \newpage
 
 \input{main/conclusion.tex}
+
+\newpage
+
+\input{main/annexes.tex}
+
 
 \end{document}
 

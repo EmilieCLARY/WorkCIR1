@@ -795,6 +795,8 @@ INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/main/description.tex
 INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/main/description.tex
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm
 INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/Images/premier.jpg
 INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/Images/premier.jpg
 INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/Images/premier.jpg
@@ -902,8 +904,6 @@ INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/Images/cryhod.png
 INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/Images/cryhod.png
 INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/Images/cryhod.png
 INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/Images/cryhod.png
-INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm
-INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm
 INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/Images/logo_aerovision.jpg
 INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/Images/logo_aerovision.jpg
 INPUT /home/yuniemos/Documents/Cours/Repos/WorkCIR1/Stage/Images/logo_aerovision.jpg
